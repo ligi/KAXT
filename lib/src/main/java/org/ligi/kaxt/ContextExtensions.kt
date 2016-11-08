@@ -8,7 +8,7 @@ import android.net.Uri
 import android.widget.Toast
 
 
-fun Context.startActivityFromClass(activityClass: Class<Activity>) {
+fun Context.startActivityFromClass(activityClass: Class<out Activity>) {
     this.startActivity(Intent(this, activityClass))
 }
 
