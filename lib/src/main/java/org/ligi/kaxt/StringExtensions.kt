@@ -4,7 +4,7 @@ package org.ligi.kaxt
 import android.graphics.Color
 import java.util.regex.Pattern
 
-fun String?.parseColor(defaultValue: Int) = when {
+fun String?.parseColor(defaultValue: Int) : Int = when {
     this == null -> defaultValue
 
     this.startsWith("rgb") -> {
@@ -16,6 +16,7 @@ fun String?.parseColor(defaultValue: Int) = when {
             Color.parseColor(this)
         } catch (ignored: Exception) {
             // fall through to default color
+            defaultValue
         }
     }
 
