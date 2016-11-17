@@ -48,28 +48,3 @@ fun Activity.lockOrientation(orientation: Int) {
 fun Activity.enableRotation() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
 }
-
-
-/**
- * sometimes you catch an intent that you did not really want or you have problems to process it
- */
-fun Activity.rethrowIntentExcludingSelf() {
-    val component = ComponentName(this, this.javaClass)
-    packageManager.setComponentEnabledSetting(component, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
-
-    try {
-        val intent = this.intent
-        intent.component = null
-        startActivity(intent)
-    } catch (e: Exception) {
-        e.printStackTrace()
-        // might be activity not found in the case of no browser installed - just be really careful here - otherwise we might end up with the Activity disabled forever
-    } finally {
-        android.os.Handler().postDelayed({
-            packageManager.setComponentEnabledSetting(component, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
-            finish()
-        }, 250)
-
-    }
-}
-
