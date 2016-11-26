@@ -2,10 +2,9 @@ package org.ligi.kaxt
 
 
 import android.app.Activity
-import android.content.ComponentName
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.os.Build
 
 /**
  * dynamically disable rotation
@@ -47,4 +46,10 @@ fun Activity.lockOrientation(orientation: Int) {
  */
 fun Activity.enableRotation() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+}
+
+fun Activity.recreateWhenPossible() {
+    if (Build.VERSION.SDK_INT >= 11) {
+        recreate()
+    }
 }
