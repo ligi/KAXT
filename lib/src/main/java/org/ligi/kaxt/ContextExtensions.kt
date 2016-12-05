@@ -1,9 +1,6 @@
 package org.ligi.kaxt
 
-import android.app.Activity
-import android.app.ActivityManager
-import android.app.DownloadManager
-import android.app.NotificationManager
+import android.app.*
 import android.content.ActivityNotFoundException
 import android.content.ClipboardManager
 import android.content.Context
@@ -33,16 +30,17 @@ fun Context.startActivityFromURL(url: Uri) {
     }
 }
 
-fun Context.getNotificationManager() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-fun Context.getClipboardManager() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-fun Context.getPowerManager() = getSystemService(Context.POWER_SERVICE) as PowerManager
 fun Context.getActivityManager() = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-fun Context.getInputMethodManager() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-fun Context.getVibrator() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-fun Context.getDownloadManager() = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+fun Context.getAlarmManager() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+fun Context.getClipboardManager() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 fun Context.getConnectivityManager() = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-fun Context.getPrintService() = getSystemService(Context.PRINT_SERVICE) as PrintManager
+fun Context.getDownloadManager() = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 fun Context.getSensorManager() = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+fun Context.getInputMethodManager() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+fun Context.getNotificationManager() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+fun Context.getPrintService() = getSystemService(Context.PRINT_SERVICE) as PrintManager
+fun Context.getPowerManager() = getSystemService(Context.POWER_SERVICE) as PowerManager
+fun Context.getVibrator() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
 
 
