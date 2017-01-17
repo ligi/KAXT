@@ -7,11 +7,11 @@ import java.util.regex.Pattern
 fun String?.parseColor(defaultValue: Int) : Int = when {
     this == null -> defaultValue
 
-    this.startsWith("rgb") -> {
+    startsWith("rgb") -> {
         parseColorRGBStyle(this, defaultValue)
     }
 
-    this.startsWith("#") -> {
+    startsWith("#") -> {
         try {
             Color.parseColor(this)
         } catch (ignored: Exception) {
