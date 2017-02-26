@@ -5,6 +5,9 @@ import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Build
+import android.support.annotation.LayoutRes
+import android.view.LayoutInflater
+import android.view.ViewGroup
 
 /**
  * dynamically disable rotation
@@ -57,4 +60,6 @@ fun Activity.recreateWhenPossible() {
 fun Activity.closeKeyboard() = currentFocus?.let {
     getInputMethodManager().hideSoftInputFromWindow(it.windowToken, 0)
 }
+
+fun Activity.inflate(@LayoutRes layout: Int, root: ViewGroup? = null) = LayoutInflater.from(this).inflate(layout, root)
 
