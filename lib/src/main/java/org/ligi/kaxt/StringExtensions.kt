@@ -1,8 +1,16 @@
 package org.ligi.kaxt
 
-
 import android.graphics.Color
+import android.util.Base64
+import java.net.URLDecoder
+import java.net.URLEncoder
 import java.util.regex.Pattern
+
+fun String.encodeURL(encoding: String = "utf-8"): String = URLEncoder.encode(this, encoding)
+fun String.decodeURL(encoding: String = "utf-8"): String = URLDecoder.decode(this, encoding)
+
+fun String.toBase64(): String = Base64.encodeToString(toByteArray(), Base64.DEFAULT)
+fun String.fromBase64() = String(Base64.decode(this, Base64.DEFAULT))
 
 fun String?.parseColor(defaultValue: Int) : Int = when {
     this == null -> defaultValue
