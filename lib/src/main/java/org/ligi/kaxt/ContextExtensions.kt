@@ -14,9 +14,11 @@ import android.os.Vibrator
 import android.print.PrintManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import kotlin.reflect.KClass
 
 
 fun Context.startActivityFromClass(activityClass: Class<out Activity>) = startActivity(Intent(this, activityClass))
+fun Context.startActivityFromClass(activityClass: KClass<out Activity>) = startActivity(Intent(this, activityClass.java))
 
 fun Context.startActivityFromURL(url: String) = this.startActivityFromURL(Uri.parse(url))
 fun Context.startActivityFromURL(url: Uri) = try {
