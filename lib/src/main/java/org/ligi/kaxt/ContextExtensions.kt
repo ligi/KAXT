@@ -20,14 +20,13 @@ import kotlin.reflect.KClass
 fun Context.startActivityFromClass(activityClass: Class<out Activity>) = startActivity(Intent(this, activityClass))
 fun Context.startActivityFromClass(activityClass: KClass<out Activity>) = startActivity(Intent(this, activityClass.java))
 
-fun Context.startActivityFromURL(url: String) = this.startActivityFromURL(Uri.parse(url))
-fun Context.startActivityFromURL(url: Uri) = try {
-    val intent = Intent(Intent.ACTION_VIEW)
-    intent.data = url
-    this.startActivity(intent)
+fun Context.startActivityFromURL(uri: Uri) = try {
+    startActivity(Intent(Intent.ACTION_VIEW, uri))
 } catch (e: ActivityNotFoundException) {
     Toast.makeText(this, "No Browser found", Toast.LENGTH_LONG).show()
 }
+
+fun Context.startActivityFromURL(url: String) = startActivityFromURL(Uri.parse(url))
 
 fun Context.getActivityManager() = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 fun Context.getAlarmManager() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
