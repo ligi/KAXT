@@ -32,4 +32,10 @@ android {
         versionName libVersionName
     }
 
+    lintOptions {
+        baseline file("../.ci/lint-baseline.xml")
+        checkAllWarnings true
+        warningsAsErrors true
+    }
+
 }
