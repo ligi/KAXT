@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'android-maven'
 apply plugin: 'de.mobilej.unmock'
 
-def libVersionName = '0.16'
-def libVersionCode = 16
+def libVersionName = '0.17'
+def libVersionCode = 17
 
 version libVersionName
 
