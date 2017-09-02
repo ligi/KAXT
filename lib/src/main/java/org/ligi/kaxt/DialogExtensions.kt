@@ -12,14 +12,10 @@ fun Dialog.dismissIfShowing() {
 }
 
 
-fun Dialog?.dismissIfNotNullAndShowing() {
-    if (this != null) {
-        dismissIfShowing()
-    }
-}
+fun Dialog?.dismissIfNotNullAndShowing() = this?.dismissIfShowing()
 
 fun AlertDialog.setButton(whichButton: Int, @StringRes label: Int, action: () -> Unit) {
-    setButton(whichButton,context.getString(label),{ dialogInterface: DialogInterface, i: Int ->
+    setButton(whichButton, context.getString(label), { _: DialogInterface, _: Int ->
         action.invoke()
     })
 }
