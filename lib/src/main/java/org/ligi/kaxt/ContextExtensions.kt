@@ -12,10 +12,19 @@ import android.net.Uri
 import android.os.PowerManager
 import android.os.Vibrator
 import android.print.PrintManager
+import android.support.annotation.AttrRes
+import android.support.annotation.ColorInt
+import android.util.TypedValue
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import kotlin.reflect.KClass
 
+
+@ColorInt
+fun Context.getThemeColor(@AttrRes res: Int) = TypedValue().let {
+    theme.resolveAttribute(res, it, true)
+    it.data
+}
 
 fun Context.startActivityFromClass(activityClass: Class<out Activity>) = startActivity(Intent(this, activityClass))
 fun Context.startActivityFromClass(activityClass: KClass<out Activity>) = startActivity(Intent(this, activityClass.java))
