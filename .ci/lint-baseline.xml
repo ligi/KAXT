@@ -1,15 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="4" by="lint 2.3.3">
+<issues format="4" by="lint 3.1.1">
 
     <issue
         id="OldTargetApi"
-        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details."
+        message="Not targeting the latest versions of Android; compatibility &#xA;modes apply. Consider testing and updating this version. &#xA;Consult the android.os.Build.VERSION_CODES javadoc for details."
         errorLine1="        targetSdkVersion 25"
         errorLine2="        ~~~~~~~~~~~~~~~~~~~">
         <location
             file="build.gradle"
+            line="32"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.android.support:support-v4 than 25.3.1 is available: 27.1.1"
+        errorLine1="    compile &quot;com.android.support:support-v4:$support_version&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="18"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="MinSdkTooLow"
+        message="The value of minSdkVersion is too low. It can be incremented&#xA;without noticeably reducing the number of supported devices."
+        errorLine1="        minSdkVersion 9"
+        errorLine2="        ~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
             line="31"
             column="9"/>
+    </issue>
+
+    <issue
+        id="Recycle"
+        message="This `Cursor` should be freed up after use with `#close()`"
+        errorLine1="        val innerCursor = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, column, sel, arrayOf(id), null)"
+        errorLine2="                                                  ~~~~~">
+        <location
+            file="src/main/java/org/ligi/kaxt/converter/ImageFromIntentUriToFileConverter.kt"
+            line="217"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is never &lt; 9"
+        errorLine1="        Configuration.ORIENTATION_PORTRAIT -> if (android.os.Build.VERSION.SDK_INT &lt; android.os.Build.VERSION_CODES.FROYO) {"
+        errorLine2="                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ligi/kaxt/ActivityExtensions.kt"
+            line="21"
+            column="51"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="Unnecessary; SDK_INT is never &lt; 9"
+        errorLine1="        Configuration.ORIENTATION_LANDSCAPE -> if (android.os.Build.VERSION.SDK_INT &lt; android.os.Build.VERSION_CODES.FROYO) {"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/ligi/kaxt/ActivityExtensions.kt"
+            line="32"
+            column="52"/>
     </issue>
 
 </issues>

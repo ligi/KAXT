@@ -39,7 +39,6 @@ fun Context.startActivityFromURL(url: String) = startActivityFromURL(Uri.parse(u
 
 fun Context.getActivityManager() = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 fun Context.getAlarmManager() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-fun Context.getClipboardManager() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 fun Context.getConnectivityManager() = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 fun Context.getDownloadManager() = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
 fun Context.getSensorManager() = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -51,5 +50,7 @@ fun Context.getVibrator() = getSystemService(Context.VIBRATOR_SERVICE) as Vibrat
 @TargetApi(19)
 fun Context.getPrintService() = getSystemService(Context.PRINT_SERVICE) as PrintManager
 
+@TargetApi(11)
+fun Context.getClipboardManager() = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
 
