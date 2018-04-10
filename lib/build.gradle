@@ -40,4 +40,14 @@ android {
         warningsAsErrors true
     }
 
+    task androidSourcesJar(type: Jar) {
+        from android.sourceSets.main.java.source
+        classifier = 'sources'
+    }
+
+    artifacts {
+        archives androidSourcesJar
+    }
+
+
 }
