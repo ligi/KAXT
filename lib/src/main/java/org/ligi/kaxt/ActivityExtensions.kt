@@ -4,7 +4,6 @@ package org.ligi.kaxt
 import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
-import android.os.Build
 import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,9 +17,7 @@ fun Activity.disableRotation() = lockOrientation(this.resources.configuration.or
 
 fun Activity.lockOrientation(orientation: Int) {
     when (orientation) {
-        Configuration.ORIENTATION_PORTRAIT -> if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.FROYO) {
-            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        } else {
+        Configuration.ORIENTATION_PORTRAIT -> {
             val rotation = this.windowManager.defaultDisplay.rotation
             if (rotation == android.view.Surface.ROTATION_90 || rotation == android.view.Surface.ROTATION_180) {
                 this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT
@@ -29,9 +26,7 @@ fun Activity.lockOrientation(orientation: Int) {
             }
         }
 
-        Configuration.ORIENTATION_LANDSCAPE -> if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.FROYO) {
-            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        } else {
+        Configuration.ORIENTATION_LANDSCAPE -> {
             val rotation = this.windowManager.defaultDisplay.rotation
             if (rotation == android.view.Surface.ROTATION_0 || rotation == android.view.Surface.ROTATION_90) {
                 this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
@@ -49,12 +44,6 @@ fun Activity.lockOrientation(orientation: Int) {
  */
 fun Activity.enableRotation() {
     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-}
-
-fun Activity.recreateWhenPossible() {
-    if (Build.VERSION.SDK_INT >= 11) {
-        recreate()
-    }
 }
 
 fun Activity.closeKeyboard() = currentFocus?.let {

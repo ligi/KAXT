@@ -1,17 +1,11 @@
 package org.ligi.kaxt
 
 import android.graphics.Point
-import android.os.Build
 import android.view.WindowManager
 
 fun WindowManager.getSizeAsPointCompat(): Point {
     val result = Point()
-    if (Build.VERSION.SDK_INT > 12) {
-        defaultDisplay.getSize(result)
-    } else {
-        @Suppress("DEPRECATION")
-        result.set(defaultDisplay.width, defaultDisplay.height)
-    }
+    defaultDisplay.getSize(result)
     return result
 }
 
