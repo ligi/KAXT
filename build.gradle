@@ -19,3 +19,61 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
+
+
+subprojects {
+    apply plugin: 'com.android.library'
+    apply plugin: 'kotlin-android'
+    apply plugin: 'android-maven'
+    apply plugin: 'de.mobilej.unmock'
+    apply plugin: 'com.github.ben-manes.versions'
+
+    def libVersionName = '0.19'
+    def libVersionCode = 19
+
+    version libVersionName
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.google.com' }
+    }
+
+    dependencies {
+        implementation "com.android.support:support-v4:$support_version"
+
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'com.squareup.assertj:assertj-android:1.2.0'
+    }
+
+    android {
+        compileSdkVersion 28
+
+        defaultConfig {
+            minSdkVersion 14
+            targetSdkVersion 28
+            versionCode libVersionCode
+            versionName libVersionName
+        }
+
+        lintOptions {
+            baseline file("../.ci/lint-baseline.xml")
+            checkAllWarnings true
+            warningsAsErrors true
+        }
+
+        task androidSourcesJar(type: Jar) {
+            from android.sourceSets.main.java.source
+            classifier = 'sources'
+        }
+
+        artifacts {
+            archives androidSourcesJar
+        }
+
+
+    }
+
+}
