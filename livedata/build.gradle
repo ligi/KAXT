@@ -1,3 +1,11 @@
 dependencies {
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+
+    testCompile("android.arch.core:core-testing:1.1.1", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+
 }
