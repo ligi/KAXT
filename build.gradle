@@ -46,7 +46,7 @@ subprojects {
 
         testImplementation 'junit:junit:4.12'
         testImplementation 'com.squareup.assertj:assertj-android:1.2.0'
-        testImplementation "io.mockk:mockk:1.8.13"
+        testImplementation "io.mockk:mockk:1.9.3"
     }
 
     android {
