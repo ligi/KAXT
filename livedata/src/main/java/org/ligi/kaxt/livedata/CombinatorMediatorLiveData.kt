@@ -1,7 +1,7 @@
 package org.ligi.kaxt.livedata
 
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 
 class CombinatorMediatorLiveData<T>(ins: List<MutableLiveData<out Any>>, function: () -> T) : MediatorLiveData<T>() {
     init {

@@ -12,8 +12,8 @@ import android.net.Uri
 import android.os.PowerManager
 import android.os.Vibrator
 import android.print.PrintManager
-import android.support.annotation.AttrRes
-import android.support.annotation.ColorInt
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
 import android.util.TypedValue
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast

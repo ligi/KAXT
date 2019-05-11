@@ -1,8 +1,8 @@
 package org.ligi.kaxt.livedata
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 
 
 class NonNullMediatorLiveData<T> : MediatorLiveData<T>()
@@ -12,7 +12,7 @@ fun <T> LiveData<T>.nonNull() = NonNullMediatorLiveData<T>().apply {
 }
 
 fun <T> NonNullMediatorLiveData<T>.observe(owner: LifecycleOwner, observer: (t: T) -> Unit) {
-    observe(owner, android.arch.lifecycle.Observer {
+    observe(owner, androidx.lifecycle.Observer {
         it?.let(observer)
     })
 }

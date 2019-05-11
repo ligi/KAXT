@@ -1,6 +1,6 @@
 package org.ligi.kaxt.livedata
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
