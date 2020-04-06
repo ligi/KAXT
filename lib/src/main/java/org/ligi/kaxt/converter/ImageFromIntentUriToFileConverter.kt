@@ -78,7 +78,7 @@ class ImageFromIntentUriToFileConverter(internal val context: Context) {
                 val split = docId.split(":".toRegex()).dropLastWhile(String::isEmpty).toTypedArray()
                 val type = split[0]
 
-                val contentUri = when(type) {
+                val contentUri = when (type) {
                     "image" -> MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     "video" -> MediaStore.Video.Media.EXTERNAL_CONTENT_URI
                     "audio" -> MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
@@ -88,7 +88,7 @@ class ImageFromIntentUriToFileConverter(internal val context: Context) {
                 val selection = "_id=?"
                 val selectionArgs = arrayOf(split[1])
 
-                if (contentUri!=null) {
+                if (contentUri != null) {
                     return getDataColumn(context, contentUri, selection, selectionArgs)
                 }
             }// MediaProvider
@@ -235,7 +235,8 @@ class ImageFromIntentUriToFileConverter(internal val context: Context) {
         val outputFile = File(cacheDir, tag)
 
         try {
-            getInputStreamByURL(url).copyTo(FileOutputStream(outputFile))
+            val inputStreamByURL = getInputStreamByURL(url) ?: return null
+            inputStreamByURL.copyTo(FileOutputStream(outputFile))
             return outputFile
         } catch (ex: Exception) {
             ex.printStackTrace()
@@ -245,7 +246,7 @@ class ImageFromIntentUriToFileConverter(internal val context: Context) {
     }
 
     @Throws(IOException::class)
-    private fun getInputStreamByURL(url: Uri): InputStream {
+    private fun getInputStreamByURL(url: Uri): InputStream? {
         if (url.toString().startsWith("content://com.google.android.gallery3d")) {
             return context.contentResolver.openInputStream(url)
         } else {
