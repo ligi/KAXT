@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import androidx.annotation.LayoutRes
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
 /**
@@ -50,5 +51,5 @@ fun Activity.closeKeyboard() = currentFocus?.let {
     getInputMethodManager().hideSoftInputFromWindow(it.windowToken, 0)
 }
 
-fun Activity.inflate(@LayoutRes layout: Int, root: ViewGroup? = null) = LayoutInflater.from(this).inflate(layout, root)
+fun Activity.inflate(@LayoutRes layout: Int, root: ViewGroup? = null) : View = LayoutInflater.from(this).inflate(layout, root)
 
