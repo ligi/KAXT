@@ -15,7 +15,6 @@ buildscript {
 
         classpath 'com.android.tools.build:gradle:3.6.2'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.28.0'
-        classpath 'de.mobilej.unmock:UnMockPlugin:0.7.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -25,7 +24,6 @@ subprojects {
     apply plugin: 'com.android.library'
     apply plugin: 'kotlin-android'
     apply plugin: 'android-maven'
-    apply plugin: 'de.mobilej.unmock'
     apply plugin: 'com.github.ben-manes.versions'
 
     def libVersionName = '0.22'
